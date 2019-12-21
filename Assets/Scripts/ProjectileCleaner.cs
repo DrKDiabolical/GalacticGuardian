@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileCleaner : MonoBehaviour
 {
+    // Whenever a object enters the collider, it is destoried.
     private void OnTriggerEnter2D(Collider2D other) 
     {
         Destroy(other.gameObject);
