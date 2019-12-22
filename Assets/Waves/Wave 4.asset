@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80bb34d77542fb29a86d3f77c41110d2, type: 3}
-  m_Name: Wave 2
+  m_Name: Wave 4
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3523929499093993489, guid: d5bc9c5f9e4c4165d9047d64749e5193,
+  enemyPrefab: {fileID: 3523929499093993489, guid: c333b2a573b5f17b987627052b96fe1d,
     type: 3}
   pathPrefab: {fileID: 3380588457848481757, guid: cf43046ab89bfe2daa44a7979f4753f1,
     type: 3}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6867689038278172161}
   - component: {fileID: 5363677433331190238}
   - component: {fileID: -1120107451105837349}
+  - component: {fileID: -5826703044957057267}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-1120107451105837349
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03125, y: 0.125}
@@ -130,3 +131,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0625, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &-5826703044957057267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228339314456607377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23a2055c2c34329486448f7d91b89fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 100
