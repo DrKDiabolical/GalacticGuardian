@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 721263623211671267}
   - component: {fileID: 721263623211671266}
-  m_Layer: 0
+  - component: {fileID: -1292938013809904180}
+  - component: {fileID: 1073772846}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,3 +83,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &-1292938013809904180
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721263623211671265}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: 0.47}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.625, y: 0.81}
+  m_EdgeRadius: 0
+--- !u!114 &1073772846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721263623211671265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b2a679cb37c2a988e5524aae51e693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 400
+  deathSFX: {fileID: 8300000, guid: dc5f9a3627d8c0dc7b0309e7a9bf371a, type: 3}
+  deathSFXVolume: 0.5
+  moveSpeed: 5
+  bulletPrefab: {fileID: 3228339314456607377, guid: 445cb3f1d8a017492a110b5610b88515,
+    type: 3}
+  projectileSpeed: 5
+  projectileFiringPeriod: 0.3
+  firingSFX: {fileID: 8300000, guid: 4e5785d802e16942d858e7bd31a1fe5e, type: 3}
+  firingSFXVolume: 0.121
+  level: {fileID: 0}

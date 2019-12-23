@@ -4,28 +4,38 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Configuration
+    // Player Configuration
+    [Header("Player Configuration")]
+    [SerializeField] int health = 400; // Defines player health.
+    [SerializeField] AudioClip deathSFX; // Store reference to death SFX audio clip.
+    [SerializeField] [Range(0, 1f)] float deathSFXVolume = 0.5f; // Defines death SFV volume.
+
+    // Player Movement Configuration
+    [Header("Player Movement")]
     [SerializeField] float moveSpeed = 5f; // Defines player move speed.
-    [SerializeField] float projectileSpeed = 5f; // Defines player projectile move speed.
-    [SerializeField] float projectileFiringPeriod = 0.5f; // Defines player contiunous fire period.
     float minX, maxX; // Defines minimum and maximum boundaries for player movement on X axis.
     float minY, maxY; // Defines minimum and maximum boundaries for player movement on Y axis.
-    Coroutine firingCoroutine;
-
-    // Cached References
+    
+    // Player Firing Configuration
+    [Header("Player Firing")]
     [SerializeField] GameObject bulletPrefab; // Stores reference to player projectile prefab.
+    [SerializeField] float projectileSpeed = 5f; // Defines player projectile move speed.
+    [SerializeField] float projectileFiringPeriod = 0.5f; // Defines player contiunous fire period.
+    [SerializeField] AudioClip firingSFX; // Store reference to firing SFX audio clip.
+    [SerializeField] [Range(0, 1f)] float firingSFXVolume = 0.15f; // Defines firing SFV volume.
+    Coroutine firingCoroutine; // Stores coroutine for firing.
 
     // Start is called before the first frame update
     void Start()
     {
-        CreateMoveBoundaries();
+        CreateMoveBoundaries(); // Creates boundaries based on screen.
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Fire();
+        Move(); // Handles player movement.
+        Fire(); // Handles player firing.
     }
 
 
@@ -59,6 +69,7 @@ public class Player : MonoBehaviour
         while (true)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0.9f, 0), Quaternion.identity) as GameObject;
+            AudioSource.PlayClipAtPoint(firingSFX, Camera.main.transform.position, firingSFXVolume);
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * projectileSpeed;
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
@@ -72,5 +83,32 @@ public class Player : MonoBehaviour
         maxX = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
         minY = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
         maxY = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
+    }
+
+    // Handles collision with an enemy projectile
+    void OnTriggerEnter2D(Collider2D other) {
+        DamageHandler damageHandler = other.gameObject.GetComponent<DamageHandler>();
+        if (!damageHandler) { return; }
+        ProcessHit(damageHandler);
+    }
+
+    // Handles removing damage.
+    void ProcessHit(DamageHandler damageHandler)
+    {
+        health -= damageHandler.GetDamageAmount();
+        damageHandler.Hit();
+        // Destroys player when out of health
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    // Handles player death
+    void Die()
+    {
+        FindObjectOfType<Level>().LoadGameOver(); // Loads GameOver scene
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
+        Destroy(gameObject);
     }
 }
