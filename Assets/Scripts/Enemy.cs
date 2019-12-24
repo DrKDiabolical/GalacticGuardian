@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     // Enemy Configuration
     [Header("Enemy Configuration")]
     [SerializeField] int health = 100; // Defines amount of health.
+    [SerializeField] int scoreValue = 100; // Defines amount of score given upon defeat.
     [SerializeField] [Range(0, 1f)] float deathSFXVolume = 0.5f; // Defines death SFV volume.
     [SerializeField] GameObject deathVFX; // Stores death VFX particle system.
     [SerializeField] AudioClip deathSFX; // Stores death SFX audio clip.
@@ -75,6 +76,7 @@ public class Enemy : MonoBehaviour
     // Handles enemy death
     void Die()
     {
+        FindObjectOfType<GameSession>().AddToScore(scoreValue);
         Destroy(gameObject); // Destroys enemy gameObject.
         GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity); // Instantiates enemy death VFX.
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume); // Plays enemy death SFX.

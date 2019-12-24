@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 400
+  scoreValue: 100
   deathSFXVolume: 0.318
   deathVFX: {fileID: 5266099307394194882, guid: d67d7a7093005ec289835e5010c5a420,
     type: 3}
@@ -194,4 +195,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23a2055c2c34329486448f7d91b89fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 500
+  damageAmount: 400

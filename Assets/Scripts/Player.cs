@@ -92,6 +92,12 @@ public class Player : MonoBehaviour
         ProcessHit(damageHandler);
     }
 
+    // Handles getting current health.
+    public int GetHealth()
+    {
+        return health;
+    }
+
     // Handles removing damage.
     void ProcessHit(DamageHandler damageHandler)
     {
